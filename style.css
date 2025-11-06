@@ -1,0 +1,643 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+		justify-content: center;
+    }
+
+    header h1.logo-text {
+        color: #2c3e50;
+        font-size: 2.5rem;
+        margin-bottom: 0;
+        margin-left: 0;
+        display: block !important;
+    }
+
+    .logo-image {
+        width: 100%;
+        /* Kendi ambleminizin boyutuna göre ayarlayın */
+        max-width: 80px;
+        /* Amblemin maksimum genişliği (örneğin 250px) */
+        height: auto;
+        margin-bottom: 0;
+        /* Arama kutusundan ayırmak için */
+        margin-right: 0;
+        margin-left: 0;
+    }
+	
+	header h1.logo-text, .logo-image {
+       cursor: pointer;
+    }
+
+    .search-container {
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 18px 25px;
+        font-size: 1.1rem;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: #3498db;
+        box-shadow: 0 4px 12px rgba(52, 152, 219, 0.25);
+    }
+
+    .search-button {
+        position: absolute;
+        right: 15px;
+        top: 31%;
+        transform: translateY(-50%);
+        background: #3498db;
+        border: none;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+    }
+
+    .search-button:hover {
+        background: #2980b9;
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .autocomplete-items {
+        position: absolute;
+        border: 2px solid #ddd;
+        border-top: none;
+        z-index: 99;
+        top: 100%;
+        left: 0;
+        right: 0;
+        border-radius: 0 0 10px 10px;
+        max-height: 250px;
+        overflow-y: auto;
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        display: none;
+    }
+
+    .autocomplete-items div {
+        padding: 12px 20px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-bottom: 2px solid #f1f1f1;
+        font-size: 1.1rem;
+    }
+
+    .autocomplete-items div:hover {
+        background-color: #f1f1f1;
+    }
+
+    .autocomplete-items div:last-child {
+        border-bottom: none;
+    }
+
+    .keyboard-hint {
+        margin-top: 12px;
+        text-align: center;
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+
+    .keyboard-hint small {
+        opacity: 0.8;
+    }
+
+    .drug-container {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        margin-bottom: 30px;
+        padding: 25px;
+        display: none;
+        transition: all 0.3s ease;
+    }
+
+    .drug-container.highlighted {
+        border: 3px solid #3498db !important;
+        box-shadow: 0 6px 25px rgba(52, 152, 219, 0.35);
+        transform: translateY(-3px);
+    }
+
+    .drug-container h2 {
+        color: #2c3e50;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #eee;
+        font-size: 1.8rem;
+    }
+
+    .accordion {
+        margin-bottom: 20px;
+        border: 2px solid #eee;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .accordion-header {
+        padding: 18px 20px;
+        background-color: #f8f9fa;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    .accordion-header:hover {
+        background-color: #e9ecef;
+    }
+
+    .accordion-header h3 {
+        margin: 0;
+        font-size: 1.3rem;
+        color: #2c3e50;
+        display: flex;
+        align-items: center;
+    }
+
+    .accordion-header h3 i {
+        margin-right: 12px;
+        color: #3498db;
+        font-size: 1.2rem;
+    }
+
+    .accordion-header .icon {
+        transition: transform 0.3s ease;
+        font-size: 1.2rem;
+    }
+
+    .accordion-header.active .icon {
+        transform: rotate(180deg);
+    }
+
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+
+    .accordion-content.active {
+        max-height: 700px !important;
+        overflow-y: auto;
+        scrollbar-width: thin;
+    }
+
+    .accordion-content.active::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .accordion-content.active::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 5px;
+    }
+
+    .accordion-content.active::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 5px;
+    }
+
+    .accordion-content.active::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+    }
+
+    .accordion-inner {
+        padding: 35px 40px;
+    }
+
+    .piyasa-isimleri .accordion-inner {
+        margin-left: 25px;
+    }
+
+    /* Piyasa isimleri listesindeki noktaları kaldırır */
+    .piyasa-isimleri .accordion-inner ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+
+    .piyasa-isimleri .accordion-content.active {
+        max-height: 525px !important;
+    }
+
+    .section ul {
+        list-style-type: none;
+    }
+
+    .section li {
+        padding: 18px 0;
+        border-bottom: 2px solid #f1f1f1;
+        font-size: 1.2rem;
+    }
+
+    .section li:last-child {
+        border-bottom: none;
+    }
+
+    .sub-accordion {
+        margin-bottom: 15px;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .sub-accordion-header {
+        padding: 15px 18px;
+        background-color: #f8f9fa;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    .sub-accordion-header:hover {
+        background-color: #e9ecef;
+    }
+
+    .sub-accordion-header h4 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #2c3e50;
+    }
+
+    .sub-accordion-header .icon {
+        transition: transform 0.3s ease;
+        font-size: 1rem;
+    }
+
+    .sub-accordion-header.active .icon {
+        transform: rotate(180deg);
+    }
+
+    .sub-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+
+    .sub-accordion-content.active {
+        max-height: 500px !important;
+        overflow-y: auto;
+        scrollbar-width: thin;
+    }
+
+    .sub-accordion-content.active::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .sub-accordion-content.active::-webkit-scrollbar-track {
+        background: #f8f9fa;
+        border-radius: 5px;
+    }
+
+    .sub-accordion-content.active::-webkit-scrollbar-thumb {
+        background: #d1d1d1;
+        border-radius: 5px;
+    }
+
+    .sub-accordion-content.active::-webkit-scrollbar-thumb:hover {
+        background: #b8b8b8;
+    }
+
+    .sub-accordion-inner {
+        padding: 35px 40px;
+        background-color: white;
+        min-height: 100px;
+    }
+
+    .sub-accordion-inner p {
+        color: #555;
+        margin: 0 0 15px 0;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        padding: 0;
+    }
+
+    footer {
+        margin-top: auto;
+        text-align: center;
+        padding: 25px 0;
+        color: #7f8c8d;
+        font-size: 1rem;
+    }
+
+    /* === YENİ EKLENEN DOZ STİLLERİ === */
+
+    .sub-accordion-inner h5.dose-condition-title {
+        font-size: 1.4rem;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        font-weight: 600;
+    }
+
+    .sub-accordion-inner h6.dose-type-title {
+        font-size: 1.2rem;
+        color: #3498db;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .sub-accordion-inner ul.dose-details-list {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .sub-accordion-inner ul.dose-details-list>li {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        border-bottom: none;
+    }
+
+    .sub-accordion-inner ul.dose-details-list ul {
+        list-style-type: none;
+        padding-left: 10px;
+        margin-top: 10px;
+    }
+
+    .sub-accordion-inner ul.dose-details-list ul li {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.9;
+        padding: 4px 0;
+        border-bottom: none;
+    }
+
+    .sub-accordion-inner ul.dose-details-list ul li strong {
+        color: #555;
+        min-width: 90px;
+        display: inline-block;
+    }
+
+    .sub-accordion-inner ul.simple-list>li {
+        background-color: transparent;
+        border: none;
+        padding: 8px 5px;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        border-bottom: 1px dashed #f1f1f1;
+        margin-bottom: 0;
+    }
+
+    .sub-accordion-inner ul.simple-list>li:last-child {
+        border-bottom: none;
+    }
+
+    /* === /YENİ STİLLER SONU === */
+
+    /* === RENKLİ ALT AKORDİYON BAŞLIKLARI (EN DOĞRU KONUM) === */
+
+    /* Yetişkin: Turuncu */
+    .sub-accordion-header.dose-yetiskin {
+        background-color: #ff9800;
+        /* Turuncu arka plan */
+        border: 1px solid #e68a00;
+    }
+
+    .sub-accordion-header.dose-yetiskin h4 {
+        color: white;
+        /* Başlık metni beyaz olsun */
+    }
+
+    .sub-accordion-header.dose-yetiskin .icon {
+        color: white;
+    }
+
+    /* Hover rengini hafif koyu turuncu yapalım */
+    .sub-accordion-header.dose-yetiskin:hover {
+        background-color: #e68a00;
+    }
+
+
+    /* Pediatrik: Pembe */
+    .sub-accordion-header.dose-cocuk {
+        background-color: #e91e63;
+        /* Pembe arka plan */
+        border: 1px solid #c2185b;
+    }
+
+    .sub-accordion-header.dose-cocuk h4 {
+        color: white;
+    }
+
+    .sub-accordion-header.dose-cocuk .icon {
+        color: white;
+    }
+
+    /* Hover rengini hafif koyu pembe yapalım */
+    .sub-accordion-header.dose-cocuk:hover {
+        background-color: #c2185b;
+    }
+
+
+    /* Geriatrik: Koyu Gri */
+    .sub-accordion-header.dose-yasli {
+        background-color: #4a4a4a;
+        /* Koyu Gri arka plan */
+        border: 1px solid #333333;
+    }
+
+    .sub-accordion-header.dose-yasli h4 {
+        color: white;
+    }
+
+    .sub-accordion-header.dose-yasli .icon {
+        color: white;
+    }
+
+    /* Hover rengini hafif daha koyu gri yapalım */
+    .sub-accordion-header.dose-yasli:hover {
+        background-color: #333333;
+    }
+	
+
+    /* === /RENKLİ ALT AKORDİYON BAŞLIKLARI SONU === */
+
+    @media (max-width: 1100px) {
+        .container {
+            max-width: 900px;
+            padding: 25px;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .container {
+            max-width: 800px;
+            padding: 20px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            padding: 15px;
+            max-width: 100%;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        .search-input {
+            padding: 15px 20px;
+            font-size: 1rem;
+        }
+
+        .drug-container {
+            padding: 20px;
+        }
+
+        .drug-container h2 {
+            font-size: 1.6rem;
+        }
+
+        .accordion-header {
+            padding: 15px;
+        }
+
+        .accordion-header h3 {
+            font-size: 1.1rem;
+        }
+
+        .accordion-content.active {
+            max-height: 700px !important;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+
+        .piyasa-isimleri .accordion-content.active {
+            max-height: 400px !important;
+        }
+
+        .accordion-inner {
+            padding: 25px 30px;
+        }
+
+        .piyasa-isimleri .accordion-inner {
+            margin-left: 15px;
+        }
+
+        .section li {
+            font-size: 1.1rem;
+            padding: 15px 0;
+        }
+
+        .sub-accordion-content.active {
+            /* Bu kuralı daha önceki talebinize göre 2500px'ten düşürdük, mobil için de sabit tutalım */
+            max-height: 500px !important;
+        }
+
+        .sub-accordion-inner {
+            padding: 25px 30px;
+            min-height: 100px;
+        }
+
+        .sub-accordion-inner p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            padding: 0;
+        }
+
+        .sub-accordion-header {
+            padding: 12px 15px;
+        }
+
+        .sub-accordion-header h4 {
+            font-size: 1rem;
+        }
+
+        .sub-accordion-inner h5.dose-condition-title {
+            font-size: 1.2rem;
+        }
+
+        .sub-accordion-inner h6.dose-type-title {
+            font-size: 1.1rem;
+        }
+
+        .sub-accordion-inner ul.dose-details-list>li {
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        .sub-accordion-inner ul.dose-details-list ul li {
+            font-size: 1rem;
+        }
+
+        .sub-accordion-inner ul.simple-list>li {
+            font-size: 1rem;
+        }
+		/* === MOBİL CİHAZ DÜZELTMELERİ === */
+
+        header {
+    /* 'center' geçersiz bir kuraldı, 'column' (dikey) olarak düzeltiyoruz */
+            flex-direction: column;
+        }
+
+        .logo-image {
+            margin-left: 0;
+    /* Ekrana sığması için 400px'lik sol boşluğu SIFIRLIYORUZ */
+            margin-right: 0;
+            margin-bottom: 20px;
+    /* Arama çubuğuyla arasına boşluk koymak için */
+            max-width: 70px;
+    /* Amblemi mobilde biraz küçültebilirsiniz */
+        }
+
+        header h1.logo-text {
+            /* Logo metninin de soldaki olası boşluklarını sıfırlayalım */
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .search-container {
+    /* Arama çubuğunun da göründüğünden emin olalım */
+            display: block;
+            width: 100%;
+        }
+
+/* === /MOBİL CİHAZ DÜZELTMELERİ SONU === */
+		
+		
+    }
