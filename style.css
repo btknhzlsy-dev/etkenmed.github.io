@@ -805,6 +805,11 @@
 
 /* Mobil uyumluluk */
 @media (max-width: 600px) {
+    .alphabet-button {
+        position: static; /* Mutlak konumlandırmayı kaldırır, akışa dahil eder */
+        margin-top: 20px; /* Başlık ile arasına boşluk koyar */
+    }
+    
     .top-nav {
         position: static;
         margin-top: 10px;
@@ -877,4 +882,5 @@
     color: #7f8c8d;
     font-size: 0.95rem;
 }
+
 
