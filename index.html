@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EtkenMED</title>
+	<link rel="icon" type="image/png" href="amblem.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        
+		<header>
+            <img src="amblem.png" alt="EtkenMed Logo" class="logo-image">
+			<h1 class="logo-text">Etken<span class="logo-accent">MED</span></h1>
+			<button id="alphabetButton" class="alphabet-button">
+                <i class="fas fa-list-ul"></i> Alfabetik Etken Maddeler
+            </button>
+			
+			<nav class="top-nav">
+                 <div class="content-search-container">
+                      <input type="text" id="contentSearchInput" placeholder="İçerik Ara...">
+                      <button id="contentSearchButton"><i class="fas fa-search"></i></button>
+                 </div>
+				 
+				 <a href="hakkinda.html" class="nav-link">Hakkında • Kaynakça</a>
+            </nav>
+
+			
+        </header>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Etken madde veya piyasa ismi arayın..." id="searchInput">
+            <button class="search-button" id="searchButton">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="autocomplete-items" id="autocompleteItems">
+                </div>
+            <div class="keyboard-hint">
+                <small>Etken madde, piyasa ismi, doz asistanı</small>
+            </div>
+        </div>
+        
+        <div id="drugsContainer">
+            </div>
+        <footer>
+			<p>SORUMLULUK REDDİ BEYANI!<small> Bu web sitesinde yer alan tüm bilgiler, yalnızca genel bilgilendirme amaçlıdır ve kesinlikle bir hekim tarafından doğrulanmalıdır. Bilgilerin doğruluğu, güncelliği veya eksiksizliği konusunda hiçbir garanti verilmemektedir. Bu içerik, profesyonel tıbbi tavsiye, teşhis veya tedavi yerine geçmez. Sağlıkla ilgili herhangi bir karar vermeden önce, mutlaka bir sağlık uzmanına danışın.</small></p>
+            <p>© 2025 EtkenMED | Tüm Hakları Saklıdır</p>
+		</footer>
+		</div> <div id="resultsModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button id="closeModalButton" class="modal-close">&times;</button>
+            <h2 id="modalTitle">Arama Sonuçları</h2>
+            <ul id="modalResultsList">
+                </ul>
+        </div>
+		
+    </div>
+	
+	<script src="script.js" defer></script>
+    
+</body>
+</html>
