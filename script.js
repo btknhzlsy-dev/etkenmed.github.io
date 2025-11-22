@@ -8265,6 +8265,86 @@ const ilacVeritabani = [
         `
     }
 },
+{
+    id: "valproikAsitContainer",
+    isim: "Valproik Asit (Valproat Sodyum)",
+    piyasaIsimleri: [
+        "Convulex CR 300 mg 50 Tablet",
+        "Convulex CR 500 mg 50 Tablet",
+        "Convulex Şurup 50 mg 100 ml",
+        "Depakin 400 mg/4 ml 1 Adet Toz ve Çözücü",
+        "Depakin 400 mg/4 ml IV 4 Flakon ve Çözücü Ampül",
+        "Depakin Chrono BT 500 mg Uzun Etkili 30 Tablet",
+        "Depakin Şurup 150 ml",
+        "Depakin Şurup 200 mg 40 ml",
+        "Depalex XR 300 mg Uzun Etkili 30 Tablet",
+        "Depalex XR 500 mg Uzun Etkili 30 Tablet",
+        "Valprocan 400 mg/4 ml"
+    ],
+    dozajlar: {
+        yetiskin: `
+            <h5 class="dose-condition-title">Kompleks Parsiyel Nöbetler & Absans Nöbetleri</h5>
+            <h6 class="dose-type-title">Oral (PO) - Başlangıç</h6>
+            <ul class="dose-details-list">
+                <li><strong>Başlangıç Dozu:</strong> 10-15 mg/kg/gün (PO).</li>
+                <li><strong>Titrasyon:</strong> Haftalık aralıklarla 5-10 mg/kg/gün artırılır.</li>
+                <li><strong>Maksimum:</strong> 60 mg/kg/gün'e kadar çıkılabilir.</li>
+            </ul>
+            <h6 class="dose-type-title">İntravenöz (IV) - Akut</h6>
+            <ul class="dose-details-list">
+                <li><strong>Doz:</strong> 10-15 mg/kg/gün (q12hr bölünmüş, 1 saat üzerinde infüze edilir).</li>
+                <li><strong>Sınırlama:</strong> 14 günü aşmamalıdır (Mümkün olan en kısa sürede PO'ya geçilmelidir).</li>
+            </ul>
+
+            <h5 class="dose-condition-title">Bipolar Mani</h5>
+            <h6 class="dose-type-title">Oral (Stavzor)</h6>
+            <ul class="dose-details-list">
+                <li><strong>Başlangıç:</strong> 750 mg/gün (PO) bölünmüş dozlarda.</li>
+                <li><strong>Titrasyon:</strong> İstenen terapötik etkiye mümkün olduğunca çabuk ayarlanır. (Max 60 mg/kg/gün).</li>
+            </ul>
+            <h6 class="dose-type-title">Oral (Depakote ER)</h6>
+            <ul class="dose-details-list">
+                <li><strong>Doz:</strong> 25 mg/kg/gün (PO) qDay. (Max 60 mg/kg/gün).</li>
+            </ul>
+
+            <h5 class="dose-condition-title">Migren Profilaksisi (Akut Tedavi İçin Değil)</h5>
+            <ul class="dose-details-list">
+                <li><strong>Stavzor:</strong> 250 mg PO q12hr (Max 1000 mg/gün).</li>
+                <li><strong>Depakote ER:</strong> 500 mg PO qDay (7 gün), ardından 500-1000 mg/gün'e ayarlanır.</li>
+            </ul>
+            
+            <h5 class="dose-condition-title">Dozaj ve İzleme Hususları</h5>
+            <ul class="dose-details-list simple-list">
+                <li>**Hepatik Yetmezlik:** Hafif-orta derecede önerilmez. **ŞİDDETLİ YETMEZLİKTE KONTRAENDİKEDİR.** (Karaciğer fonksiyon testleri (LFT) izlenmelidir).</li>
+                <li>**Renal Yetmezlik:** Doz ayarlaması gerekmez.</li>
+                <li>**Terapötik Aralık:** Epilepsi: 50-100 mcg/mL; Mani: 50-125 mcg/mL (Toplam valproat).</li>
+            </ul>
+        `,
+        cocuk: `
+            <h5 class="dose-condition-title">Nöbetler (Kompleks Parsiyel & Absans) (≥10 Yaş)</h5>
+            <h6 class="dose-type-title">Oral (PO)</h6>
+            <ul class="dose-details-list">
+                <li><strong>Başlangıç Dozu:</strong> 10-15 mg/kg/gün (PO).</li>
+                <li><strong>Titrasyon:</strong> Haftalık aralıklarla 5-10 mg/kg/gün artırılır. (Max 60 mg/kg/gün).</li>
+            </ul>
+            <h6 class="dose-type-title">İntravenöz (IV)</h6>
+            <ul class="dose-details-list">
+                <li>Yetişkin dozuyla aynıdır: 10-15 mg/kg/gün (IV) (Max 60 mg/kg/gün).</li>
+            </ul>
+            <h5 class="dose-condition-title">Kritik Not</h5>
+            <ul class="dose-details-list simple-list">
+                <li>< 10 yaş çocuklar için güvenlik ve etkinlik tam olarak belirlenmemiştir.</li>
+                <li>Çocuklarda, özellikle <2 yaş olanlarda fatal hepatik yetmezlik riski daha yüksektir.</li>
+            </ul>
+        `,
+        yasli: `
+            <h5 class="dose-condition-title">Geriatrik Doz</h5>
+            <ul class="dose-details-list simple-list">
+                <li>Yetişkin dozuyla aynı şekilde uygulanır, ancak daha düşük dozda başlanması ve ayarlamaların daha dikkatli yapılması gerekebilir.</li>
+            </ul>
+        `
+    }
+},
 
 
 ];
